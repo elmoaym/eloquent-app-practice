@@ -21,8 +21,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         Post::create([
-            'title' => $request->title,
-            'content' => $request->content,
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
             'published_at' => now(),
         ]);
 
@@ -39,8 +39,8 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         $post->update([
-            'title' => $request->title,
-            'content' => $request->content,
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
         ]);
 
         return redirect('/posts');
